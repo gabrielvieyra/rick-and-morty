@@ -1,0 +1,9 @@
+.characters-cards-container {
+  width: 80%;
+  margin: 0px auto;
+
+  // grid
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 24px 24px;
+}
