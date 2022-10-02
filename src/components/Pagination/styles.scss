@@ -1,0 +1,11 @@
+.pagination {
+  width: 80%;
+  margin: 0px auto;
+  background-color: lightblue;
+  padding: 16px 0;
+
+  // grid
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 24px 24px;
+}

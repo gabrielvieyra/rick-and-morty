@@ -1,6 +1,7 @@
 // Components
 import Header from './components/Header';
 import CharacterCardsContainer from './components/CharacterCardsContainer';
+import Pagination from './components/Pagination';
 
 // Provider
 import { CharactersProvider } from './context/CharactersContext';
@@ -13,6 +14,7 @@ function App() {
     <>
       <Header />
       <CharactersProvider>
+        <Pagination />
         <CharacterCardsContainer />
       </CharactersProvider>
     </>
