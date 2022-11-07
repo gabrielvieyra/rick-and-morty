@@ -1,8 +1,11 @@
+@import '../../styles/variables.scss';
+
 .header {
-  height: 4.5rem;
+  height: 4rem;
   width: 100%;
-  background-color: tomato;
+  background-color: $white;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: $black;
 }
