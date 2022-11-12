@@ -1,0 +1,21 @@
+@import '../../styles/variables.scss';
+
+.info {
+  display: flex;
+  flex-direction: column;
+
+  &__location {
+    font-weight: $font-weight-medium;
+    color: $light-grey;
+  }
+
+  &__location-name {
+    font-weight: $font-weight-medium;
+    color: $white;
+
+    // truncar texto
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
