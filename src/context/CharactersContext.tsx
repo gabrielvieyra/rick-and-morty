@@ -1,5 +1,4 @@
-// Dependencies
-import { createContext, useState, useEffect } from 'react';
+import { FC, createContext, useState, useEffect } from 'react';
 
 // Interface
 import { Character } from '../types/types';
@@ -23,7 +22,7 @@ interface CharactersProviderProps {
   children: React.ReactNode;
 }
 
-export const CharactersProvider: React.FC<CharactersProviderProps> = ({ children }) => {
+export const CharactersProvider: FC<CharactersProviderProps> = ({ children }) => {
   const [characters, setCharacters] = useState<Array<Character>>([]);
   const [totalResults, setTotalResults] = useState<number>(0);
   const [pages, setPages] = useState<number>(0);
@@ -40,7 +39,7 @@ export const CharactersProvider: React.FC<CharactersProviderProps> = ({ children
       const getResponse = await fetch('https://rickandmortyapi.com/api/character');
       const getJson = await getResponse.json();
       const { info, results } = getJson;
-      // console.log(info);
+      // console.log(results);
       setCharacters(results);
       setTotalResults(info.count);
       setPages(info.pages);
@@ -89,7 +88,15 @@ export const CharactersProvider: React.FC<CharactersProviderProps> = ({ children
 
   return (
     <CharactersContext.Provider
-      value={{ characters, totalResults, pages, actualPage, prevPage, nextPage, goToPage }}
+      value={{
+        characters,
+        totalResults,
+        pages,
+        actualPage,
+        prevPage,
+        nextPage,
+        goToPage,
+      }}
     >
       {children}
     </CharactersContext.Provider>

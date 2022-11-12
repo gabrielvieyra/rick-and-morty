@@ -1,4 +1,3 @@
-// Dependencies
 import { useContext } from 'react';
 
 // Components
@@ -12,12 +11,11 @@ import './styles.scss';
 
 const CharacterCardsContainer: React.FC = () => {
   const { characters } = useContext(CharactersContext);
-  // console.log(characters);
 
   return (
     <div className='characters-cards-container'>
       {characters.map((character, index) => {
-        const { name, image, id, species, status } = character;
+        const { name, image, id, species, status, location, episode } = character;
         return (
           <CharacterCard
             key={id ? id : index}
@@ -25,6 +23,8 @@ const CharacterCardsContainer: React.FC = () => {
             src={image}
             species={species}
             status={status}
+            lastKnownLocation={location.name}
+            totalEpisodes={episode.length}
           />
         );
       })}

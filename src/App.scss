@@ -1,5 +1,46 @@
+@import './styles//variables.scss';
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  font-family: $main-font;
+  background-color: $black;
+}
+
+h1 {
+  font-size: $font-size-xl;
+}
+
+h2 {
+  font-size: $font-size-lg;
+}
+
+h3 {
+  font-size: $font-size-md;
+}
+
+h4 {
+  font-size: $font-size-sm;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  background: none;
 }
