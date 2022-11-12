@@ -7,3 +7,10 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 24px 24px;
 }
+
+.characters-cards-container-loading {
+  width: 80%;
+  margin: 1.5rem auto;
+  display: flex;
+  justify-content: center;
+}

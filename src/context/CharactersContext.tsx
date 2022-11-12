@@ -1,10 +1,11 @@
-import { FC, createContext, useState, useEffect } from 'react';
+import { FC, ReactNode, createContext, useState, useEffect } from 'react';
 
 // Interface
 import { Character } from '../types/types';
 
 interface CharactersContextProps {
   characters: Array<Character>;
+  loading: boolean;
   totalResults: number;
   pages: number;
   actualPage: number;
@@ -19,11 +20,12 @@ interface CharactersContextProps {
 export const CharactersContext = createContext({} as CharactersContextProps);
 
 interface CharactersProviderProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export const CharactersProvider: FC<CharactersProviderProps> = ({ children }) => {
   const [characters, setCharacters] = useState<Array<Character>>([]);
+  const [loading, setLoading] = useState<boolean>(true);
   const [totalResults, setTotalResults] = useState<number>(0);
   const [pages, setPages] = useState<number>(0);
   const [actualPage, setActualPage] = useState<number>(1);
@@ -41,12 +43,14 @@ export const CharactersProvider: FC<CharactersProviderProps> = ({ children }) =>
       const { info, results } = getJson;
       // console.log(results);
       setCharacters(results);
+      setLoading(false);
       setTotalResults(info.count);
       setPages(info.pages);
       setPrevPage(info.prev);
       setNextPage(info.next);
     } catch (err) {
       console.log(err);
+      setLoading(false);
     }
   }
 
@@ -54,6 +58,7 @@ export const CharactersProvider: FC<CharactersProviderProps> = ({ children }) =>
     page: string,
     e: React.MouseEvent<HTMLButtonElement> | React.ChangeEvent<HTMLSelectElement>
   ): Promise<void> {
+    setLoading(true);
     // el dataset.type es para obtener el data-type
     const type = (e.target as HTMLButtonElement).dataset.type;
     let number = 0;
@@ -79,10 +84,12 @@ export const CharactersProvider: FC<CharactersProviderProps> = ({ children }) =>
       const getJson = await getResponse.json();
       const { info, results } = getJson;
       setCharacters(results);
+      setLoading(false);
       setPrevPage(info.prev);
       setNextPage(info.next);
     } catch (err) {
       console.log(err);
+      setLoading(false);
     }
   }
 
@@ -90,6 +97,7 @@ export const CharactersProvider: FC<CharactersProviderProps> = ({ children }) =>
     <CharactersContext.Provider
       value={{
         characters,
+        loading,
         totalResults,
         pages,
         actualPage,
