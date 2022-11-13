@@ -1,12 +1,15 @@
-import { useContext } from 'react';
+import { FC, useContext } from 'react';
 
 // Context
 import { CharactersContext } from '../../context/CharactersContext';
 
+// Components
+import Button from '../Button';
+
 // Styles
 import './styles.scss';
 
-const Pagination: React.FC = () => {
+const Pagination: FC = () => {
   const { totalResults, pages, actualPage, prevPage, nextPage, goToPage } =
     useContext(CharactersContext);
   // console.log(pages, 'totalPages');
@@ -41,18 +44,24 @@ const Pagination: React.FC = () => {
           })}
         </select>
       </div>
-      <div>
-        {prevPage && (
-          // con el data-type lo que hacemos es saber a que boton le di click
-          <button data-type='prev' onClick={e => goToPage(prevPage, e)}>
-            Previous
-          </button>
-        )}
-        {nextPage && (
-          <button data-type='next' onClick={e => goToPage(nextPage, e)}>
-            Next
-          </button>
-        )}
+      <div className='pagination__buttons'>
+        {/* con el data-type lo que hacemos es saber a que boton le di click */}
+        <Button
+          ariaLabel='button'
+          dataType='prev'
+          isDisabled={prevPage ? false : true}
+          handlePage={e => goToPage(prevPage as string, e)}
+        >
+          Previous
+        </Button>
+        <Button
+          ariaLabel='button'
+          dataType='next'
+          isDisabled={nextPage ? false : true}
+          handlePage={e => goToPage(nextPage as string, e)}
+        >
+          Next
+        </Button>
       </div>
     </div>
   );
