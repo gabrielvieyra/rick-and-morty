@@ -1,4 +1,3 @@
-// Dependencies
 import { useContext } from 'react';
 
 // Context
@@ -14,13 +13,25 @@ const Pagination: React.FC = () => {
 
   return (
     <div className='pagination'>
-      <p>Total results: {totalResults}</p>
-      <p>
-        Page: {actualPage} of {pages}
-      </p>
-      <div style={{ display: 'flex' }}>
-        <p>Go to page:</p>
-        <select name='goTo' value={actualPage} data-type='goTo' onChange={e => goToPage('', e)}>
+      <div className='pagination__item'>
+        <span className='pagination__item-data'>Total results:</span>
+        <span>{totalResults}</span>
+      </div>
+      <div className='pagination__item'>
+        <span className='pagination__item-data'>Page:</span>
+        <span>
+          {actualPage} of {pages}
+        </span>
+      </div>
+      <div className='pagination__item'>
+        <span className='pagination__item-data'>Go to page:</span>
+        <select
+          name='goTo'
+          className='pagination__item-select'
+          value={actualPage}
+          data-type='goTo'
+          onChange={e => goToPage('', e)}
+        >
           {Array.from(Array(pages).keys()).map(page => {
             return (
               <option key={page + 1} value={page + 1}>

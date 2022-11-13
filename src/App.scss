@@ -44,3 +44,12 @@ button {
   border: none;
   background: none;
 }
+
+select {
+  background: transparent;
+  border: none;
+}
+
+select:focus {
+  outline: none;
+}
