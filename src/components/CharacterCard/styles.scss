@@ -9,6 +9,18 @@
   overflow: hidden;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
 
+  &--Alive {
+    border: 3px solid $green;
+  }
+
+  &--Dead {
+    border: 3px solid $red;
+  }
+
+  &--unknown {
+    border: 3px solid $light-grey;
+  }
+
   &__imageContainer {
     height: 60%;
 

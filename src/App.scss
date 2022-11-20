@@ -54,6 +54,17 @@ select:focus {
   outline: none;
 }
 
+// Scrollbar
+::-webkit-scrollbar {
+  width: 0.625rem;
+  background-color: $grey;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $dark-green;
+  border-radius: 99em;
+}
+
 // Media queries
 @media (max-width: $breakpoint-sm) {
   h1 {
