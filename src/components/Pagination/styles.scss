@@ -35,3 +35,22 @@
     gap: 12px;
   }
 }
+
+// Media queries
+@media (max-width: $breakpoint-xl) {
+  .pagination {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: $breakpoint-md) {
+  .pagination {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .pagination {
+    grid-template-columns: 1fr;
+  }
+}

@@ -53,3 +53,10 @@ select {
 select:focus {
   outline: none;
 }
+
+// Media queries
+@media (max-width: $breakpoint-sm) {
+  h1 {
+    font-size: $font-size-lg;
+  }
+}
