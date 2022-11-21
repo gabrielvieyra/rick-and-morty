@@ -1,5 +1,8 @@
 import { FC, ReactNode, createContext, useState, useEffect } from 'react';
 
+// Services
+import { getCharacters, getPaginationData } from '../services';
+
 // Interface
 import { Character } from '../types/types';
 
@@ -36,22 +39,27 @@ export const CharactersProvider: FC<CharactersProviderProps> = ({ children }) =>
     getData();
   }, []);
 
-  async function getData(): Promise<void> {
-    try {
-      const getResponse = await fetch('https://rickandmortyapi.com/api/character');
-      const getJson = await getResponse.json();
-      const { info, results } = getJson;
-      // console.log(results);
-      setCharacters(results);
-      setLoading(false);
-      setTotalResults(info.count);
-      setPages(info.pages);
-      setPrevPage(info.prev);
-      setNextPage(info.next);
-    } catch (err) {
-      console.log(err);
-      setLoading(false);
-    }
+  function getData(): void {
+    getCharacters()
+      .then(response => {
+        setCharacters(response);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.log(err);
+        setLoading(false);
+      });
+
+    getPaginationData()
+      .then(response => {
+        setTotalResults(response.count);
+        setPages(response.pages);
+        setPrevPage(response.prev);
+        setNextPage(response.next);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   async function goToPage(

@@ -11,3 +11,10 @@ export interface Character {
 interface Location {
   name: string;
 }
+
+export interface Pagination {
+  count: number;
+  next: string | null;
+  pages: number;
+  prev: string | null;
+}
