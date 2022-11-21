@@ -6,13 +6,16 @@ import { CharactersContext } from '../../context/CharactersContext';
 // Components
 import Button from '../Button';
 
+// Custom hooks
+import { usePagination } from '../../hooks/usePagination';
+
 // Styles
 import './styles.scss';
 
 const Pagination: FC = () => {
-  const { totalResults, pages, actualPage, prevPage, nextPage, goToPage } =
-    useContext(CharactersContext);
-  // console.log(pages, 'totalPages');
+  const { totalResults, pages, actualPage, prevPage, nextPage } = useContext(CharactersContext);
+
+  const goToPage = usePagination();
 
   return (
     <div className='pagination'>

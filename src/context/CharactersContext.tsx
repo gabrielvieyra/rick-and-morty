@@ -8,16 +8,17 @@ import { Character } from '../types/types';
 
 interface CharactersContextProps {
   characters: Array<Character>;
+  setCharacters: (characters: Array<Character>) => void;
   loading: boolean;
+  setLoading: (value: boolean) => void;
   totalResults: number;
   pages: number;
   actualPage: number;
+  setActualPage: (actualPage: number) => void;
   prevPage: string | null;
+  setPrevPage: (value: string | null) => void;
   nextPage: string | null;
-  goToPage: (
-    page: string,
-    e: React.MouseEvent<HTMLButtonElement> | React.ChangeEvent<HTMLSelectElement>
-  ) => void;
+  setNextPage: (value: string | null) => void;
 }
 
 export const CharactersContext = createContext({} as CharactersContextProps);
@@ -40,7 +41,9 @@ export const CharactersProvider: FC<CharactersProviderProps> = ({ children }) =>
   }, []);
 
   function getData(): void {
-    getCharacters()
+    const api = 'https://rickandmortyapi.com/api/character';
+
+    getCharacters(api)
       .then(response => {
         setCharacters(response);
         setLoading(false);
@@ -50,7 +53,7 @@ export const CharactersProvider: FC<CharactersProviderProps> = ({ children }) =>
         setLoading(false);
       });
 
-    getPaginationData()
+    getPaginationData(api)
       .then(response => {
         setTotalResults(response.count);
         setPages(response.pages);
@@ -62,56 +65,21 @@ export const CharactersProvider: FC<CharactersProviderProps> = ({ children }) =>
       });
   }
 
-  async function goToPage(
-    page: string,
-    e: React.MouseEvent<HTMLButtonElement> | React.ChangeEvent<HTMLSelectElement>
-  ): Promise<void> {
-    setLoading(true);
-    // el dataset.type es para obtener el data-type
-    const type = (e.target as HTMLButtonElement).dataset.type;
-    let number = 0;
-
-    switch (type) {
-      case 'prev':
-        setActualPage(actualPage - 1);
-        break;
-      case 'next':
-        setActualPage(actualPage + 1);
-        break;
-      case 'goTo':
-        number = Number((e.target as HTMLSelectElement).value);
-        page = `https://rickandmortyapi.com/api/character?page=${number}`;
-        setActualPage(number);
-        break;
-      default:
-        return;
-    }
-
-    try {
-      const getResponse = await fetch(page);
-      const getJson = await getResponse.json();
-      const { info, results } = getJson;
-      setCharacters(results);
-      setLoading(false);
-      setPrevPage(info.prev);
-      setNextPage(info.next);
-    } catch (err) {
-      console.log(err);
-      setLoading(false);
-    }
-  }
-
   return (
     <CharactersContext.Provider
       value={{
         characters,
+        setCharacters,
         loading,
+        setLoading,
         totalResults,
         pages,
         actualPage,
+        setActualPage,
         prevPage,
+        setPrevPage,
         nextPage,
-        goToPage,
+        setNextPage,
       }}
     >
       {children}
