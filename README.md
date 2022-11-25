@@ -2,7 +2,7 @@
 
 Esta página web muestra un listado de personajes de la serie de animación Rick and Morty con información de cada uno de los personajes.
 
-**Demo:** link de la demo
+**Demo:** https://rick-and-morty-gabriel-vieyra.vercel.app/
 
 ### Características generales:
 
@@ -10,8 +10,8 @@ Esta página web muestra un listado de personajes de la serie de animación Rick
 - La página muestra los veinte primeros personajes de la API de Rick and Morty
 - Paginación
 - Manejo del estado de la aplicación mediante Context api
-- TODO: Creacion e implementacion de custom hooks con el fin de optimizar el código
-- TODO: La página web es responsive
+- Creacion e implementacion de custom hooks con el fin de optimizar el código
+- La página web es responsive
 - TODO: Tests
 
 ### Instalación:
@@ -46,8 +46,7 @@ npm run dev
 
 ### Imágenes:
 
-- Imagen 01
-- Imagen 02
+![rick-and-morty-app](https://user-images.githubusercontent.com/47900029/204055912-8d8470cb-6d84-47fc-992b-8926b8b26f36.png)
 
 <!--
 - Estructura de la documentacion:
@@ -81,8 +80,8 @@ npm run dev
 - Git / Github
 
 - Imágenes:
-- Imagen 01
-- Imagen 02
+- Captura de pantalla 01
+- Captura de pantalla 02
 -->
 
 <!--
@@ -94,18 +93,17 @@ npm run dev
 - Paginacion*
 - Botones*
 - Card*
+- Scroll personalizado*
+- Responsive*
 
 - TODO:
-- Responsive
-- Sumarle un borde de color a las cards (00:32:07), tomar este proyecto como referencia de responsive
-- Chusmear feedback que goncy dio sobre proyectos en su discord
-- Custom hook / Servicio
+- Chusmear feedback que goncy dio sobre proyectos en su discord / custom hooks (chusmear en goncy y frontendcafe)
+- Chusmear video de noe sobre planetas
 - Test unitarios y de integracion
 - Probar deploy con vercel
 
 - Commits:
-- ajustes en la imagen de la card  y actualizo la documentacion
-- agrego responsive
+- actualizo el readme
 -->
 
 <!--
@@ -119,10 +117,37 @@ npm run dev
 - Card
 - Buscador
 - Footer
+- Toast
+- Modal
 - Scroll personalizado
+- Responsive
+- Dark Mode
+- Lazy Loading en las imágenes
+
+- Portfolio
+- Dark Mode
+- Responsive (menu mobile)
+
+- https://octaviocossytorquati.vercel.app/
+- https://github.com/GonzaloVivas/coder-vivas/tree/master/src
+- https://github.com/jmsanchezdiaz?tab=repositories
+
+- Peliculas
+- Login, Registro
+
+- https://github.com/Lemongnz/lemonWeatherApp/tree/main/src/components
+- https://github.com/gonza-lab/crm-react
+- https://paletly.netlify.app/
 
 - Animaciones:
-- Probar animacion de esqueleton
+- Esqueletons, los podemos usar ej en las cards mientras carga la informacion
+
+- Dark Mode:
+- Para el switch de dark mode se suele usar el tipico sol o luna para que se identifique como tal
+- Se usa mucho para portfolios
+
+- Modal:
+- Tiene que tener la funcionalidad de cerrarse cuando presionas la X y cuando tocas afuera del modal
 
 - Router:
 - Manejo de rutas con react router dom
@@ -131,7 +156,8 @@ npm run dev
 - Si navegamos a una url inexistente saldra el mensaje de aviso 'Pelicula / Proximo estreno no encontrada'
 
 - Test:
-- Test unitarios con Jest
+- Test unitarios con Jest para funciones
+- Test unitarios con React Testing Library para componentes
 - Test de integracion con Cypress
 
 - Buscador:
@@ -139,7 +165,11 @@ npm run dev
 - Si se busca por un texto por ejemplo "xxx" y no hay ningúna que coincida con dicho texto se debía mostrar un mensaje del tipo "No hay ningúna pelicula que coincida
 con la palabra xxx"
 - Al realizar una busqueda no se tendra en cuenta si la persona ha introducido el texto en mayusculas o minusculas
+- Cuando vas tipeando en el input va filtrando automaticamente
 
 - Listado:
 - El listado de personajes se carga en orden alfabético / al azar
+
+- Registro:
+- Opcion de contraseña visible o no
 -->
