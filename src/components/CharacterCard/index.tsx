@@ -22,7 +22,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({
   totalEpisodes,
 }) => {
   return (
-    <div className={`characterCard characterCard--${status}`}>
+    <div data-cy='character' className={`characterCard characterCard--${status}`}>
       <div className='characterCard__imageContainer'>
         <img src={src} alt={name} className='characterCard__imageContainer-image' />
       </div>
