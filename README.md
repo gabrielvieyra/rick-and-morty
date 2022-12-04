@@ -12,7 +12,7 @@ Esta página web muestra un listado de personajes de la serie de animación Rick
 - Manejo del estado de la aplicación mediante Context api
 - Creacion e implementacion de custom hooks con el fin de optimizar el código
 - La página web es responsive
-- TODO: Tests
+- Tests de integración con Cypress
 
 ### Instalación:
 
@@ -43,6 +43,7 @@ npm run dev
 - TypeScript
 - React
 - Git / Github
+- Cypress
 
 ### Imágenes:
 
@@ -97,13 +98,14 @@ npm run dev
 - Responsive*
 
 - TODO:
-- Chusmear feedback que goncy dio sobre proyectos en su discord / custom hooks (chusmear en goncy y frontendcafe)
-- Chusmear video de noe sobre planetas
 - Test unitarios y de integracion
-- Probar deploy con vercel
+- Chusmear performance (ver que cursos tengo que hablan sobre esto)
+- Lazy Loading en las imágenes
+
+- Seguir chusmeando feedback que goncy dio sobre proyectos en su discord (seguir con esto despues de un tiempo)
 
 - Commits:
-- actualizo el readme
+- asa
 -->
 
 <!--
@@ -138,6 +140,9 @@ npm run dev
 - https://github.com/Lemongnz/lemonWeatherApp/tree/main/src/components
 - https://github.com/gonza-lab/crm-react
 - https://paletly.netlify.app/
+- https://github.com/eguitler/netflox/blob/master/src/App.jsx
+- https://github.com/MiaFate/challenge-giphy/commits/main
+- https://github.com/FrancoCarini/coursetracker-front/blob/master/src/App.js
 
 - Animaciones:
 - Esqueletons, los podemos usar ej en las cards mientras carga la informacion
@@ -155,10 +160,10 @@ npm run dev
 - La url del detalle de la pelicula es compatible ej si visitamos esa url directamente en el navegador se mostrara el detalle del personaje
 - Si navegamos a una url inexistente saldra el mensaje de aviso 'Pelicula / Proximo estreno no encontrada'
 
-- Test:
-- Test unitarios con Jest para funciones
-- Test unitarios con React Testing Library para componentes
-- Test de integracion con Cypress
+- Tests:
+- Tests unitarios con Jest para funciones
+- Tests unitarios con React Testing Library para componentes
+- Tests de integracion con Cypress
 
 - Buscador:
 - Busqueda de personajes de la serie por nombre (probar con debunce)
