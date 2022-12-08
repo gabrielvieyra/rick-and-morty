@@ -43,29 +43,35 @@ export const CharactersProvider: FC<CharactersProviderProps> = ({ children }) =>
     getData();
   }, []);
 
-  function getData(): void {
+  async function getData(): Promise<void> {
     const api = 'https://rickandmortyapi.com/api/character';
 
-    getCharacters(api)
-      .then(response => {
-        setCharacters(response);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.log(err);
-        setError(true);
-      });
-
-    getPaginationData(api)
-      .then(response => {
+    try {
+      const response = await getPaginationData(api);
+      if (response) {
         setTotalResults(response.count);
         setPages(response.pages);
         setPrevPage(response.prev);
         setNextPage(response.next);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+      } else {
+        setError(true);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+
+    try {
+      const response = await getCharacters(api);
+      if (response) {
+        setLoading(false);
+        setCharacters(response);
+      } else {
+        setLoading(false);
+        setError(true);
+      }
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   return (

@@ -10,13 +10,20 @@ export const usePagination = (): ((
   page: string,
   e: React.MouseEvent<HTMLButtonElement> | React.ChangeEvent<HTMLSelectElement>
 ) => void) => {
-  const { setLoading, actualPage, setActualPage, setCharacters, setPrevPage, setNextPage } =
-    useContext(CharactersContext);
+  const {
+    setLoading,
+    actualPage,
+    setActualPage,
+    setCharacters,
+    setPrevPage,
+    setNextPage,
+    setError,
+  } = useContext(CharactersContext);
 
-  function goToPage(
+  async function goToPage(
     page: string,
     e: React.MouseEvent<HTMLButtonElement> | React.ChangeEvent<HTMLSelectElement>
-  ): void {
+  ): Promise<void> {
     setLoading(true);
     // el dataset.type es para obtener el data-type
     const type = (e.target as HTMLButtonElement).dataset.type;
@@ -38,24 +45,30 @@ export const usePagination = (): ((
         return;
     }
 
-    getCharacters(page)
-      .then(response => {
-        setCharacters(response);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.log(err);
-        setLoading(false);
-      });
-
-    getPaginationData(page)
-      .then(response => {
+    try {
+      const response = await getPaginationData(page);
+      if (response) {
         setPrevPage(response.prev);
         setNextPage(response.next);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+      } else {
+        setError(true);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+
+    try {
+      const response = await getCharacters(page);
+      if (response) {
+        setLoading(false);
+        setCharacters(response);
+      } else {
+        setLoading(false);
+        setError(true);
+      }
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   return goToPage;

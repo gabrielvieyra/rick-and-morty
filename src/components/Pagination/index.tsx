@@ -13,14 +13,14 @@ import { usePagination } from '../../hooks/usePagination';
 import './styles.scss';
 
 const Pagination: FC = () => {
-  const { totalResults, pages, actualPage, prevPage, nextPage, characters } =
+  const { totalResults, pages, actualPage, prevPage, nextPage, error } =
     useContext(CharactersContext);
 
   const goToPage = usePagination();
 
   return (
     <>
-      {characters && (
+      {!error && (
         <div className='pagination'>
           <div className='pagination__item'>
             <span className='pagination__item-data'>Total results:</span>
