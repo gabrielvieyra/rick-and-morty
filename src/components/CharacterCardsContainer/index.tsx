@@ -3,6 +3,7 @@ import { useContext } from 'react';
 // Components
 import CharacterCard from '../CharacterCard';
 import Spinner from '../Spinner';
+import Error from '../Error';
 
 // Context
 import { CharactersContext } from '../../context/CharactersContext';
@@ -19,7 +20,7 @@ const CharacterCardsContainer: React.FC = () => {
         <div className='characters-cards-container-loading'>
           <Spinner />
         </div>
-      ) : (
+      ) : characters ? (
         <div className='characters-cards-container'>
           {characters.map((character, index) => {
             const { name, image, id, species, status, location, episode } = character;
@@ -36,6 +37,8 @@ const CharacterCardsContainer: React.FC = () => {
             );
           })}
         </div>
+      ) : (
+        <Error />
       )}
     </>
   );

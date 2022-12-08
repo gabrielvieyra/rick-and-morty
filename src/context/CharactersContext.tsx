@@ -11,6 +11,8 @@ interface CharactersContextProps {
   setCharacters: (characters: Array<Character>) => void;
   loading: boolean;
   setLoading: (value: boolean) => void;
+  error: boolean;
+  setError: (value: boolean) => void;
   totalResults: number;
   pages: number;
   actualPage: number;
@@ -30,6 +32,7 @@ interface CharactersProviderProps {
 export const CharactersProvider: FC<CharactersProviderProps> = ({ children }) => {
   const [characters, setCharacters] = useState<Array<Character>>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<boolean>(false);
   const [totalResults, setTotalResults] = useState<number>(0);
   const [pages, setPages] = useState<number>(0);
   const [actualPage, setActualPage] = useState<number>(1);
@@ -50,7 +53,7 @@ export const CharactersProvider: FC<CharactersProviderProps> = ({ children }) =>
       })
       .catch(err => {
         console.log(err);
-        setLoading(false);
+        setError(true);
       });
 
     getPaginationData(api)
@@ -72,6 +75,8 @@ export const CharactersProvider: FC<CharactersProviderProps> = ({ children }) =>
         setCharacters,
         loading,
         setLoading,
+        error,
+        setError,
         totalResults,
         pages,
         actualPage,
