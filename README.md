@@ -48,4 +48,5 @@ npm run dev
 ### Imágenes:
 
 ![rick-and-morty-app](https://user-images.githubusercontent.com/47900029/204055912-8d8470cb-6d84-47fc-992b-8926b8b26f36.png)
+
 ![error](https://user-images.githubusercontent.com/47900029/206502215-2eea65f3-9954-4258-bb3f-7cb8449803f6.png)
